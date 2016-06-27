@@ -26,5 +26,12 @@ public class Main {
         producer2.interrupt();
         cpu1.interrupt();
         cpu2.interrupt();
+
+        System.out.print("CpuProcesses generated: ");
+        System.out.println(producer1.getCount() + producer2.getCount());
+
+        System.out.print("CpuProcesses processed: ");
+        System.out.println(cpu1.getCount() + cpu2.getCount());
+
     }
 }

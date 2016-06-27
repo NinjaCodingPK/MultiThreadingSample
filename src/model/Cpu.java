@@ -4,7 +4,9 @@ package model;
  * Created by wookie on 6/27/16.
  */
 public class Cpu extends Thread {
-    private int time = (int)(Math.random()*10);
+    private final static int UPPER_BORDER = 600;
+    private final static int LOWER_BORDER = 400;
+    private final int time = (int)(Math.random()*(UPPER_BORDER - LOWER_BORDER)*10);
     private String name;
     private CpuQueue queue1;
     private CpuQueue queue2;
@@ -29,7 +31,7 @@ public class Cpu extends Thread {
             if (prod != null) {
                 try {
                     System.out.println("Task is performing by " + this.name + queue1.getSize() + queue2.getSize());
-                    Thread.sleep(300);
+                    Thread.sleep(time);
                     count++;
                 } catch (InterruptedException ex) {
                     return;

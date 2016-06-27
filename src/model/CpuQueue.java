@@ -106,4 +106,8 @@ public class CpuQueue {
     public int getCount() {
         return count;
     }
+
+    public List<CpuProcess> getQueue() {
+        return queue;
+    }
 }
