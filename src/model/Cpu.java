@@ -1,57 +1,17 @@
 package model;
 
 /**
- * Created by wookie on 6/27/16.
+ * Created by wookie on 7/1/16.
  */
-public class Cpu extends Thread {
-    private final static int UPPER_BORDER = 600;
-    private final static int LOWER_BORDER = 400;
-    private final int time = (int)(Math.random()*(UPPER_BORDER - LOWER_BORDER)*10);
-    private String name;
-    private CpuQueue queue1;
-    private CpuQueue queue2;
-    private int count = 0;
-
-    public Cpu(String name, CpuQueue queue1, CpuQueue queue2) {
-        this.queue1 = queue1;
-        this.queue2 = queue2;
-        this.name = name;
-    }
-
-    @Override
-    public void run() {
-        while (!isInterrupted()) {
-
-            CpuProcess prod;
-            if(queue1.getSize() > queue2.getSize())
-                prod = queue1.pull();
-            else
-                prod = queue2.pull();
-
-            if (prod != null) {
-                try {
-                    System.out.println("Task is performing by " + this.name + queue1.getSize() + queue2.getSize());
-                    Thread.sleep(time);
-                    count++;
-                } catch (InterruptedException ex) {
-                    return;
-                }
-            } else {
-                Thread.yield();
-            }
-        }
-    }
+public abstract class Cpu extends Thread {
+    protected int time;
+    protected String name;
+    protected CpuQueue queue1;
+    protected CpuQueue queue2;
+    protected int count;
 
     public int getCount() {
         return count;
-    }
-
-    public CpuQueue getQueue1() {
-        return queue1;
-    }
-
-    public CpuQueue getQueue2() {
-        return queue2;
     }
 
     public String getCpuName() {
