@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * Class which model a process.
  * Created by wookie on 6/27/16.
  */
 public class CpuProcess {

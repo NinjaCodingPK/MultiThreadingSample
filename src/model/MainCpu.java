@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * CPU class which will be work all time.
  * Created by wookie on 6/27/16.
  */
 public class MainCpu extends Cpu {
@@ -17,6 +18,9 @@ public class MainCpu extends Cpu {
         this.name = name;
     }
 
+    /**
+     * Method get processes from queues every time.
+     */
     @Override
     public void run() {
         while (!isInterrupted()) {

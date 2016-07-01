@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * Abstract class CPU.
  * Created by wookie on 7/1/16.
  */
 public abstract class Cpu extends Thread {

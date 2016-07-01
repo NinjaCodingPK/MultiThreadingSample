@@ -6,6 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * Class which model a queue of processes.
  * Created by wookie on 6/27/16.
  */
 public class CpuQueue {

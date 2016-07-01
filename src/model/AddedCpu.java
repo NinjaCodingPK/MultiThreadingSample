@@ -1,6 +1,7 @@
 package model;
 
 /**
+ * CPU class which will be work by condition.
  * Created by wookie on 7/1/16.
  */
 public class AddedCpu extends Cpu {
@@ -17,6 +18,10 @@ public class AddedCpu extends Cpu {
         this.name = name;
     }
 
+
+    /**
+     * Method get values from queues only when size of one of queues become bigger the MAX_SIZE.
+     */
     @Override
     public void run() {
         while (!isInterrupted()) {
