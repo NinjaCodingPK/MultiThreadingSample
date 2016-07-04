@@ -7,8 +7,14 @@ package model;
 public class ProcessProducer extends  Thread {
     private final static int UPPER_BORDER = 600;
     private final static int LOWER_BORDER = 355;
+    /**
+     * Name of thread.
+     */
     private String name;
     private CpuQueue queue;
+    /**
+     * Count of generated processes.
+     */
     private int count;
 
     public ProcessProducer(String name, CpuQueue queue) {
@@ -16,6 +22,9 @@ public class ProcessProducer extends  Thread {
         this.name = name;
     }
 
+    /**
+     * Method generate and push CpuProducers into a queue.
+     */
     @Override
     public void run(){
         while(!isInterrupted()){
@@ -25,7 +34,7 @@ public class ProcessProducer extends  Thread {
             System.out.println("Push by " + name + ". Queue size " + queue.getSize());
             try {
                 //Thread.sleep(toughness);
-                Thread.sleep(620);
+                Thread.sleep(920);
             } catch (InterruptedException ex) {
                 return;
             }

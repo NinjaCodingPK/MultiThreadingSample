@@ -35,7 +35,7 @@ public class MainCpu extends Cpu {
                 try {
                     System.out.println("Task is performing by " + this.name);
                     //Thread.sleep(time);
-                    Thread.sleep(410);
+                    Thread.sleep(610);
                     count++;
                 } catch (InterruptedException ex) {
                     return;

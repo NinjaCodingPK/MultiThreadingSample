@@ -19,7 +19,7 @@ public class Main {
         cpu1.start();
         cpu2.start();
 
-        Thread.sleep(15000);
+        Thread.sleep(30000);
         //planner.interrupt();
         producer1.interrupt();
         producer2.interrupt();

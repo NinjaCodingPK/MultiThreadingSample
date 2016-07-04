@@ -24,29 +24,29 @@ public class AddedCpu extends Cpu {
      */
     @Override
     public void run() {
+        CpuProcess proc = null;
         while (!isInterrupted()) {
-            if((queue1.getSize() > CpuQueue.MAX_SIZE) || (queue2.getSize() > CpuQueue.MAX_SIZE)) {
-                CpuProcess proc;
-                if (queue1.getSize() > queue2.getSize())
-                    proc = queue1.pull();
-                else
-                    proc = queue2.pull();
+            if(queue1.getSize() > CpuQueue.MAX_SIZE) {
+                proc = queue1.pull();
+            }
+            else if(queue2.getSize() > CpuQueue.MAX_SIZE) {
+                proc = queue2.pull();
+            }
 
-                if (proc != null) {
-                    try {
-                        //System.out.println("Task is performing by " + this.name + queue1.getSize() + queue2.getSize());
-                        System.out.println("Task is performing by " + this.name);
-                        //Thread.sleep(time);
-                        Thread.sleep(200);
-                        count++;
-                        //System.out.println("Added CPU stopped");
-                        //this.wait();
-                    } catch (InterruptedException ex) {
-                        return;
-                    }
-                } else {
-                    Thread.yield();
+
+            if (proc != null) {
+                try {
+                    System.out.println("Task is performing by " + this.name);
+                    //Thread.sleep(time);
+                    Thread.sleep(200);
+                    count++;
+                    proc = null;
+                    //this.wait();
+                } catch (InterruptedException ex) {
+                    return;
                 }
+            } else {
+                Thread.yield();
             }
         }
     }
