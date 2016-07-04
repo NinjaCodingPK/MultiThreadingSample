@@ -22,6 +22,7 @@ public class CpuQueue {
         synchronized (this) {
             queue.add(process);
             count++;
+            notify();
         }
     }
 
@@ -32,9 +33,16 @@ public class CpuQueue {
     public CpuProcess pull() {
         CpuProcess result = null;
 
-        synchronized (this) {
+//        synchronized (this) {
+//            if(queue.isEmpty()) {
+//                try {
+//                    wait();
+//                } catch (InterruptedException e) {
+//
+//                }
+//            }
             result = queue.isEmpty() ? null : queue.remove(0);
-        }
+//        }
         return result;
     }
 

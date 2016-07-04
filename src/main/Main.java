@@ -10,13 +10,12 @@ public class Main {
         CpuQueue queue2 = new CpuQueue();
 
         AddedCpu cpu1 = new AddedCpu("CPU1", queue1, queue2);
-        MainCpu cpu2 = new MainCpu("CPU2", queue1, queue2);
+        MainCpu cpu2 = new MainCpu("CPU2", queue1, queue2, cpu1);
         ProcessProducer producer1 = new ProcessProducer("Producer 1", queue1);
         ProcessProducer producer2 = new ProcessProducer("Producer 2", queue2);
 
         producer1.start();
         producer2.start();
-        cpu1.start();
         cpu2.start();
 
         Thread.sleep(30000);

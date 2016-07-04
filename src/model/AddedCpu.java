@@ -9,7 +9,7 @@ public class AddedCpu extends Cpu {
     private final static int LOWER_BORDER = 400;
 
     {
-        time = (int)(Math.random()*(UPPER_BORDER - LOWER_BORDER)*10);
+        time = (int)(Math.random()*(UPPER_BORDER-LOWER_BORDER)+LOWER_BORDER);
     }
 
     public AddedCpu(String name, CpuQueue queue1, CpuQueue queue2) {
@@ -23,7 +23,7 @@ public class AddedCpu extends Cpu {
      * Method get values from queues only when size of one of queues become bigger the MAX_SIZE.
      */
     @Override
-    public void run() {
+    public synchronized void run() {
         CpuProcess proc = null;
         while (!isInterrupted()) {
             if(queue1.getSize() > CpuQueue.MAX_SIZE) {
@@ -41,12 +41,16 @@ public class AddedCpu extends Cpu {
                     Thread.sleep(200);
                     count++;
                     proc = null;
-                    //this.wait();
                 } catch (InterruptedException ex) {
                     return;
                 }
             } else {
-                Thread.yield();
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+
+                }
+                //Thread.yield();
             }
         }
     }

@@ -28,7 +28,7 @@ public class ProcessProducer extends  Thread {
     @Override
     public void run(){
         while(!isInterrupted()){
-            int toughness = (int)(Math.random()*(UPPER_BORDER - LOWER_BORDER)*10);
+            int toughness = (int)(Math.random()*(UPPER_BORDER-LOWER_BORDER)+LOWER_BORDER);
             queue.push(new CpuProcess(toughness));
             count++;
             System.out.println("Push by " + name + ". Queue size " + queue.getSize());
